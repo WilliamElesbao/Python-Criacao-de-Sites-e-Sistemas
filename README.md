@@ -5,4 +5,4 @@ O Histórico de conversas não fica armazenado, ou seja, após recarregar a pág
 
 | PC | Mobile |
 |--------------|-------------|
-|![Texto alternativo](static\images\screenshot-pc.png)|![Texto alternativo](static\images\screenshot-mob.jpeg)|
+|![Texto alternativo](https://github.com/WilliamElesbao/Python-Criacao-de-Sites-e-Sistemas/blob/main/static/images/screenshot-pc.png)|![Texto alternativo](https://github.com/WilliamElesbao/Python-Criacao-de-Sites-e-Sistemas/blob/main/static/images/screenshot-mob.jpeg)
