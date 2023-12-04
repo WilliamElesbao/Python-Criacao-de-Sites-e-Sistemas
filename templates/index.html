@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>WillTube Chat</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="static/css/styles.css">
+    
+    <!-- JS -->
+    <!--site com os scripts: https://cdnjs.com/-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.1/socket.io.js" integrity="sha512-Z6C1p1NIexPj5MsVUunW4pg7uMX6/TT3CUVldmjXx2kpip1eZcrAnxIusDxyFIikyM9A61zOVNgvLr/TGudOQg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+    <header>
+        <img id="banner"src="{{ url_for('static', filename='images/wallpaper.png') }}"/>
+    </header>
+
+    <div id="lista_mensagens">
+        <p>Welcome to WillTube Tech!</p>
+    </div>
+
+    <div id="input-container">
+        <input type="text" id="usuario" placeholder="Usuario" required>
+        <div style="width: 10px;"></div>
+        <input type="text" id="mensagem" placeholder="Mensagem" required>
+        <button id="botao_enviar">Enviar</button>
+    </div>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+
+            var socket = io("192.168.0.104:5000") // IP da sua rede local + porta
+            
+            socket.on("connect", function() {
+                console.log("estamos on!");
+            });
+
+            socket.on("message", function(data) {
+                console.log("enviou mensagem");
+                $("#lista_mensagens").append($('<p>').text(data));
+                // Scroll to the bottom of the "lista_mensagens"
+                $("#lista_mensagens").scrollTop($("#lista_mensagens")[0].scrollHeight);
+            });
+
+            $("#botao_enviar").on('click', function() {
+                console.log("clicou no botao_enviar");
+                socket.send($('#usuario').val() + ": " + $('#mensagem').val());
+                $('#mensagem').val('');
+            });
+            
+            $("#mensagem").on('keypress', function() {
+                if (event.key === "Enter") {
+                    console.log("deu enter");
+                    socket.send($('#usuario').val() + ": " + $('#mensagem').val());
+                    $('#mensagem').val('');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

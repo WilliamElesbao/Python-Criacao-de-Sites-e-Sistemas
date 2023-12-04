@@ -1,0 +1,68 @@
+* {
+    box-sizing: border-box;
+}
+#banner {
+    background-size: cover; /* Ajusta o tamanho da imagem para cobrir todo o elemento */
+    background-position: center; /* Centraliza a imagem no elemento */
+    width: 100%;
+    height: 30%; /* Altura desejada para o cabeçalho */
+    background-repeat: no-repeat;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+#lista_mensagens {
+    padding: 10px;
+    height: calc(100vh - 150px);
+    overflow-y: scroll;
+}
+
+#lista_mensagens p {
+    background-color: #b0d7e1;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 10px 0;
+}
+
+#input-container {
+    display: flex;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #000a2c;
+    padding: 10px;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#input-container input[type="text"] {
+    padding: 10px;
+    border: none;
+    outline: none;
+    flex: 1;
+    border-radius: 5px;
+}
+
+#input-container input#usuario {
+    margin-right: 10px;
+    width: 30%;
+}
+
+#input-container input#mensagem {
+    flex: 1;
+}
+
+#input-container button {
+    padding: 10px 20px;
+    background-color: #549aab;
+    color: #FFF;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    margin-left: 10px;
+    border-radius: 5px;
+}
